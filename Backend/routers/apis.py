@@ -1,3 +1,6 @@
+
+# apis.py - This file defines the API routes for managing monitored APIs in the application. It uses FastAPI's APIRouter to create a modular set of routes related to API monitoring functionality. The routes include adding a new API, retrieving all monitored APIs, updating an existing API's details, and updating the status (active/inactive) of an API. Each route interacts with the SQLite database using functions from the database module to perform the necessary operations, such as inserting new records, fetching existing records, and updating records based on the provided data. The routes also handle error cases, such as when an API is not found for updating, by raising appropriate HTTP exceptions.
+
 from fastapi import APIRouter, HTTPException
 from database import get_connection
 from models.api_target import APICreate, APIUpdate, APIStatus

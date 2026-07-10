@@ -1,0 +1,32 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>API Monitoring</title>
+        <link rel="stylesheet" href="style.css">
+    
+    </head>
+    <body>
+        <header>
+            <h1>API Monitoring Dashboard</h1>
+        </header>
+
+        <main>
+            <section class = "add-api">
+                <h2>Add New API</h2>
+                <input type="text" id="api-name" placeholder="API Name">
+                <input type="text" id="api-url" placeholder="https://example.com"/>
+                <button onclick="addAPI()">Add API</button>
+            </section>
+
+            <section class="api-list">
+                <h2>Monitored APIs</h2>
+                <div id="apis-container">Loading...</div>
+            </section>
+
+
+        </main>
+
+        <script src="app.js"></script>
+    </body>
+</html>

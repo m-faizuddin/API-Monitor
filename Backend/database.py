@@ -1,3 +1,4 @@
+#database.py - This file contains the database connection and setup functions for the API monitoring application. It defines the get_connection() function to establish a connection to the SQLite database and set the row factory for easier access to columns by name. The create_tables() function is responsible for creating the necessary tables (monitored_apis and monitoring_logs) in the database if they do not already exist. The monitored_apis table stores information about the APIs being monitored, while the monitoring_logs table stores logs of each monitoring check, including status code, response time, success status, and timestamps. This file serves as the foundation for interacting with the database throughout the application.
 
 import sqlite3
 
@@ -35,34 +36,6 @@ def create_tables():
     conn.commit()
     conn.close()
 
-def add_api(name, url):
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute("INSERT INTO monitored_apis (name, url) VALUES (?, ?)", (name, url)) 
-
-    conn.commit()
-    conn.close()
-
-def get_apis():
-    conn = get_connection()
-    cursor = conn.cursor()
-
-    cursor.execute("SELECT * FROM monitored_apis")
-    apis = cursor.fetchall() # Fetch all rows from the monitored_apis table and store them in the apis variable as a list of sqlite3.Row objects
-
-    result = []
-    for api in apis:
-        result.append({
-            "id": api["id"],
-            "name": api["name"],
-            "url": api["url"],
-            "created_at": api["created_at"],
-            "is_active": bool(api["is_active"]) # Convert the is_active value from the database (which is stored as an integer) to a boolean value (True or False) before adding it to the result list
-        })
-
-    conn.close()
-
-    return result
 
 
    
